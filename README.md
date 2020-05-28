@@ -1,4 +1,6 @@
-# Stock Tick Demo Application
+#*WIP*
+
+#Stock Tick Demo Application
 A short few sentences describing what is the purpose of the example and what the user will learn
 
 e.g.
@@ -7,16 +9,15 @@ This application shows how to use configure your NodeJs application to connect t
 Contributor(s): [Peyton Casper](https://github.com/peytoncasper)
 
 ## Objectives
-A list of the top objectives that are being demonstrated by this sample
 
-e.g.
-* To demonstrate how to specify at runtime between a standard (DSE/DDAC/C*) client configuration and an Apollo configuration for the same application.
+* To demonstrate how Cassandra and Datastax can be used to solve IoT data management issues.
   
 ## Project Layout
-A list of key files within this repo and a short 1-2 sentence description of why they are important to the project
 
-e.g.
-* app.js - The main application file which contains all the logic to switch between the configurations
+* [ticker.cql](/cql/ticker.cql) - Sets up the the schema for the ticker data.
+* [stock_seed_data.csv](/seeding/stock_seed_data.csv) - CSV file of data to populate ticker tables.
+* [seed.py](/seeding/seed.py) - Loads the initial seed data.
+* [stream.py](/seeding/stream.py) - Streams in tick data from stock_seed_data.csv
 
 ## How this Works
 A description of how this sample works and how it demonstrates the objectives outlined above
