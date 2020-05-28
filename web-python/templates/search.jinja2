@@ -1,0 +1,87 @@
+{% extends "base.jinja2" %}
+
+{% block title %}Ticker{% endblock %}
+
+{% block body %}
+<div id="page-generic">
+    {% include "/top-nav.jinja2" %}
+
+    <div id="search-page-content">
+
+        <form id="search-form">
+            <table class="sbtable">
+                <tbody>
+                <tr>
+                    <td class="sbtd1">
+                        <input class="search_button-fld" type="Text"
+                               name="search_term" id="search_term"
+                               placeholder="Enter Symbol or Name"
+                               value="{{ search_term }}"/>
+                    </td>
+                    <td class="sbtd1">
+                        <input class="search_button-btn" id="search_button"
+                               type="submit" value="SEARCH"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+
+        {% if alert %}
+            <div class="alert alert-{{ alert.level }}" role="alert">{{ alert.message }}</div>
+        {% endif %}
+
+        {% for row in results %}
+            <table id="search-item-{{ loop.index }}" class="search-item">
+                <tbody>
+                <tr>
+                    <td class="dlcname">
+                        <p class="dlcsubheader">Symbol</p>
+
+                        <p class="dlcsh-symbol">{{ row.symbol }}</p>
+                    </td>
+                    <td>
+                        <p class="dlcsubheader">Name</p>
+
+                        <p>{{ row.name }}</p></td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="dlcsubheader">Exchange </p>
+
+                        <p>{{ row.exchange }}</p>
+                    </td>
+                    <td>
+                        <p class="dlcsubheader">Sector</p>
+
+                        <p>{{ row.sector }}</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        {% set daily_gain=(row.current - row.open) / row.open * 100 %}
+                        <p class="dlcsubheader">Daily Gain </p>
+
+                        <p class="{% if daily_gain > 0 %}pricerising{% else %}pricefalling{% endif %}">
+                            {{ '%0.2f'|format(daily_gain) }}%
+                        </p>
+                    </td>
+                    <td>
+                        <p class="dlcsubheader">Last Trade</p>
+
+                        <p id="current-{{ row.exchange }}-{{ row.symbol }}">
+                            {{ row.current|currency }}
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+{#            <script type="text/javascript">#}
+{#                setInterval(function(){#}
+{#                    currentValues('{{ row.exchange }}', '{{ row.symbol }}', '1', '{{ row.investment }}');#}
+{#                }, 1000);#}
+{#            </script>#}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

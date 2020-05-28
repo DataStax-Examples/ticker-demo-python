@@ -1,0 +1,97 @@
+{% extends "base.jinja2" %}
+
+{% block title %}Ticker{% endblock %}
+
+{% block body %}
+    <div id="page-generic">
+        {% include "/navbar.jinja2" %}
+
+        <table id="item-list">
+            <thead>
+            <tr>
+                <th class="tapcell1 padded">Symbol
+                </th>
+                <th class="tapcell2 padded right">Current
+                </th>
+                <th class="tapcell3 padded right">Gain / Loss
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in results %}
+                <tr {% if loop.first %}class="selecteditem"{% endif %}
+                    id="itemblistutton{{ loop.index }}">
+                    <td class="tapcell1 padded">
+                        <a href="#">{{ row.symbol }}</a>
+                    </td>
+                    <td class="tapcell2 padded right"
+                        id="current-{{ row.exchange }}-{{ row.symbol }}">
+                        ---
+                    </td>
+                    <td class="tapcell3 padded right"
+                        id="gain-{{ row.exchange }}-{{ row.symbol }}">
+                        ---
+                    </td>
+                </tr>
+                <script type="text/javascript">
+                    setInterval(function(){
+                        currentValues('{{ row.exchange }}', '{{ row.symbol }}', '{{ row.quantity }}', '{{ row.investment }}');
+                    }, 1000);
+                </script>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div id="details-list-block">
+            {% for row in results %}
+                <div id="itemblistdetails{{ loop.index }}" class="itemblistdetailsclass">
+                    <table id="details-list">
+                        <tbody>
+                        <tr>
+                            <td class="dlcname">
+                                <a href="#">{{ row.name }}</a>
+                            </td>
+                            <td class="gencolorcode">
+                                <p class="dlcsubheader">Change</p>
+
+                                <p id="investment-change-{{ row.exchange }}-{{ row.symbol }}">
+                                    ---
+                                </p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="dlcsubheader">Action</p>
+
+                                <p>
+                                    <a href="#">Buy</a> /
+                                    <a href="#">Sell</a></p>
+                            </td>
+                            <td>
+                                <p class="dlcsubheader">Quantity</p>
+
+                                <p>{{ row.quantity }}</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="dlcsubheader">Last Trade</p>
+
+                                <p>{{ row.last_trade|currency }}</p>
+                            </td>
+                            <td>
+                                <p class="dlcsubheader">Balance</p>
+
+                                <p id="balance-{{ row.exchange }}-{{ row.symbol }}">
+                                    ---
+                                </p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="static/js/custom-v1.js"></script>
+{% endblock %}

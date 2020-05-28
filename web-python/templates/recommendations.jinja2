@@ -1,0 +1,105 @@
+{% extends "base.jinja2" %}
+
+{% block title %}Ticker{% endblock %}
+
+{% block body %}
+    <body>
+    <div id="recommendations-page-div">
+        {% include "/navbar.jinja2" %}
+
+        {% if results %}
+            <table id="item-list">
+                <thead>
+                <tr>
+                    <th class="tapcell1 padded">Symbol
+                    </th>
+                    <th class="tapcell2 padded center">Action</th>
+                    <th class="tapcell3 padded right">Why
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for row in results %}
+                    <tr {% if loop.first %}class="selecteditem"{% endif %}
+                        id="itemblistutton{{ loop.index }}">
+                        <td class="tapcell1">
+                            <a href="#">{{ row.symbol }}</a>
+                        </td>
+                        <td class="tapcell2 padded center {% if row.buy %}pricerising{% else %}pricefalling{% endif %}">
+                            {% if row.buy %}BUY{% else %}SELL{% endif %}
+                        </td>
+                        <td class="tapcell3 padded right">
+                            {% if row.buy %}+{% else %}-{% endif %}
+                            {{ '%d'|format(row.projected_growth * 100) }}% /
+                            {{ '%d'|format(row.invested_peers * 100) }}%
+                        </td>
+                    </tr>
+                    <script type="text/javascript">
+                        setInterval(function(){
+                            currentValues('{{ row.exchange }}', '{{ row.symbol }}', '{{ row.quantity }}', '{{ row.investment }}');
+                        }, 1000);
+                    </script>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div id="search-page-content">
+                <div class="alert alert-info alert-link" role="alert">
+                    You need to <a href="/customize">customize</a> your investment
+                    preferences before getting recommendations.
+                </div>
+            </div>
+        {% endif %}
+
+        <div id="details-list-block">
+            {% for row in results %}
+                <div id="itemblistdetails{{ loop.index }}" class="itemblistdetailsclass">
+                    <table id="details-list">
+                        <tbody>
+                        <tr>
+                            <td class="dlcname">
+                                <a href="#">{{ row.name }}</a>
+                            </td>
+                            <td class="gencolorcode">
+                                <p class="dlcsubheader">Quantity</p>
+
+                                <p>{{ row.quantity }}</p>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p class="dlcsubheader">Price</p>
+
+                                <p id="current-{{ row.exchange }}-{{ row.symbol }}">
+                                    ---
+                                </p>
+                            </td>
+                            <td>
+                                <p class="dlcsubheader">Order</p>
+
+                                <p id="balance-{{ row.exchange }}-{{ row.symbol }}"
+                                   class="{% if row.buy %}pricerising{% else %}pricefalling{% endif %}">
+                                    ---
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="gencolorcode">
+                                <p class="dlcsubheader">Why</p>
+
+                                <p class="{% if row.buy %}pricerising{% else %}pricefalling{% endif %}">
+                                    {% if row.buy %}{% else %}-{% endif %}
+                                    {{ '%d'|format(row.projected_growth * 100) }}%
+                                    {% if row.buy %}Gain{% else %}Loss{% endif %}/
+                                    {{ '%d'|format(row.invested_peers * 100) }}% of Peers
+                                    {% if row.buy %}Invested{% else %}Divested{% endif %}
+                                </p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="static/js/custom-v1.js"></script>
+{% endblock %}

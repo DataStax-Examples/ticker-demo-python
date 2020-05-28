@@ -1,0 +1,145 @@
+{% extends "base.jinja2" %}
+
+{% block title %}Ticker{% endblock %}
+
+{% block head %}
+    <link href="static/css/login-page.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <body class="customize-body">
+    <div id="page-generic">
+        {% include "/top-nav.jinja2" %}
+
+        <div id="customize-form-placement-div">
+            <div id="customize-form-placement-div-sp"></div>
+            <div>
+
+
+                <form id="customize-form" action="/recommendations"
+                      method="post">
+                    <ul>
+                        <li>Risk Tolerance</li>
+                        <li>
+                            <input type="radio" name="risk_tolerance"
+                                   id="risk_tolerance_low"
+                                   value="low"
+                                   {% if user_profile['risk_tolerance'] == 'low' %}checked{% endif %}/>
+                            <label for="risk_tolerance_low">Low</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="risk_tolerance"
+                                   id="risk_tolerance_medium"
+                                   value="medium"
+                                   {% if user_profile['risk_tolerance'] == 'medium' %}checked{% endif %}/>
+                            <label for="risk_tolerance_medium">Medium</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="risk_tolerance"
+                                   id="risk_tolerance_high"
+                                   value="high"
+                                   {% if user_profile['risk_tolerance'] == 'high' %}checked{% endif %}/>
+                            <label for="risk_tolerance_high">High</label>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>Preferred Investment Types</li>
+                        <li>
+                            <input type="checkbox"
+                                   name="preferred_investment_types:money-market"
+                                   id="pit_money_market"
+                                   {% if 'money-market' in user_profile['preferred_investment_types'] %}checked{% endif %}/>
+                            <label for="pit_money_market">Money Market</label>
+                        </li>
+                        <li>
+                            <input type="checkbox"
+                                   name="preferred_investment_types:bonds"
+                                   id="pit_bonds"
+                                   {% if 'bonds' in user_profile['preferred_investment_types'] %}checked{% endif %}/>
+                            <label for="pit_bonds">Bonds</label>
+                        </li>
+                        <li>
+                            <input type="checkbox"
+                                   name="preferred_investment_types:stock"
+                                   id="pit_money_stocks"
+                                   {% if 'stock' in user_profile['preferred_investment_types'] %}checked{% endif %}/>
+                            <label for="pit_money_stocks">Stocks</label>
+                        </li>
+                        <li>
+                            <input type="checkbox"
+                                   name="preferred_investment_types:international-securities"
+                                   id="pit_international_securities"
+                                   {% if 'international-securities' in user_profile['preferred_investment_types'] %}checked{% endif %}/>
+                            <label for="pit_international_securities">International
+                                Securities</label>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li><select id="retirement_age" name="retirement_age">
+                            <option value="retirement_age" disabled selected>
+                                Retirement Age
+                            </option>
+                            <option value="35-45"
+                                    {% if user_profile['retirement_age'] == '35-45' %}selected{% endif %}>
+                                35-45
+                            </option>
+                            <option value="45-65"
+                                    {% if user_profile['retirement_age'] == '45-65' %}selected{% endif %}>
+                                45-65
+                            </option>
+                            <option value="65-75"
+                                    {% if user_profile['retirement_age'] == '65-75' %}selected{% endif %}>
+                                65-75
+                            </option>
+                            <option value="75-85"
+                                    {% if user_profile['retirement_age'] == '75-85' %}selected{% endif %}>
+                                75-85
+                            </option>
+                            <option value="85+"
+                                    {% if user_profile['retirement_age'] == '85+' %}selected{% endif %}>
+                                85+
+                            </option>
+                        </select>
+                        </li>
+                        <li><select id="withdrawal_year" name="withdrawal_year">
+                            <option value="withdrawal_year" disabled selected>
+                                When do you expect to draw funds?
+                            </option>
+                            <option value="<5"
+                                    {% if user_profile['withdrawal_year'] == '<5' %}selected{% endif %}>
+                                &lt; 5 years
+                            </option>
+                            <option value="5-10"
+                                    {% if user_profile['withdrawal_year'] == '5-10' %}selected{% endif %}>
+                                5-10 years
+                            </option>
+                            <option value="10-20"
+                                    {% if user_profile['withdrawal_year'] == '10-20' %}selected{% endif %}>
+                                10-20 years
+                            </option>
+                            <option value="20-30"
+                                    {% if user_profile['withdrawal_year'] == '20-30' %}selected{% endif %}>
+                                20-30 years
+                            </option>
+                            <option value="30+"
+                                    {% if user_profile['withdrawal_year'] == '30+' %}selected{% endif %}>
+                                30+ years
+                            </option>
+                            <option value="retirement-age"
+                                    {% if user_profile['withdrawal_year'] == 'retirement-age' %}selected{% endif %}>
+                                At retirement age
+                            </option>
+                        </select>
+                        </li>
+                        <li>
+                            <input id="submit_button" type="submit"
+                                   value="SUBMIT"/>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="static/js/custom-v1.js"></script>
+
+{% endblock %}

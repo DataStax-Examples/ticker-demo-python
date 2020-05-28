@@ -1,0 +1,168 @@
+{% extends "base.jinja2" %}
+
+{% block title %}Ticker{% endblock %}
+
+{% block body %}
+<div class="dash-body">
+<div id="page-generic">
+
+
+    <!-- separate NAV for DashPage START -->
+    <div id="top-navigation" class="clearfix"><a href="/portfolio"><img
+            src="static/img/datastax/ticker/mobile-top-nav-button-close-v2.png"
+            id="mob-nav-bar-button"></a>
+        <a href="#"><img src="static/img/datastax/ticker/mobile-top-nav-logo.png"
+                         id="mob-nav-bar-logo"></a><a href="search"><img
+                src="static/img/datastax/ticker/mobile-top-nav-search-icon-v2.png"
+                id="mob-nav-bar-search-icon"></a>
+    </div>
+    <div id="top-navigation-sp"></div>
+    <!-- separate NAV for DashPage END -->
+
+
+    <div id="dash-bar-placement-div">
+        <div id="dash-bar-placement-div-sp"></div>
+        <ul id="dash-bar" class="clearfix">
+            <li class="dash-row-class drchovable">
+                <a href="/portfolio">
+                    <div class="dash-icon-div-class"><img
+                            src="static/img/datastax/ticker/dash-icon-home.png"
+                            class="dash-icon-img"></div>
+                    <div class="dash-text-div-class">
+                        Home
+                    </div>
+                </a>
+            </li>
+            <li class="dash-row-class drchovable">
+                <a href="/">
+                    <div class="dash-icon-div-class"><img
+                            src="static/img/datastax/ticker/dash-icon-logoff.png"
+                            class="dash-icon-img"></div>
+                    <div class="dash-text-div-class">
+                        Log off
+                    </div>
+                </a>
+            </li>
+            <li class="dash-row-class drchovable">
+                <a href="#">
+                    <div class="dash-icon-div-class"><img
+                            src="static/img/datastax/ticker/dash-icon-accounts.png"
+                            class="dash-icon-img"></div>
+                    <div class="dash-text-div-class">
+                        Accounts
+                    </div>
+                </a>
+            </li>
+            <li class="dash-row-class drcselected">
+                <div class="drcmenutype">
+                    <div class="dash-icon-div-class"><img
+                            src="static/img/datastax/ticker/dash-icon-trading.png"
+                            class="dash-icon-img"></div>
+                    <div class="dash-text-div-class">
+                        Trading & Portfolios
+                    </div>
+                    <div class="dash-arrowend-div-class"><img
+                            src="static/img/datastax/ticker/dash-icon-arrowend-down.png"
+                            class="dash-arrowend-down-img"></div>
+                </div>
+            </li>
+            <li class="dash-row-class drchassubmenu">
+                <ul id="dash-bar-submenu-ul-1" class="dash-bar-submenu">
+                    <li class="dash-row-class drchovable">
+                        <a href="/portfolio">
+                            <div class="dash-icon-div-class"><img
+                                    src="static/img/datastax/ticker/dash-icon-submenu.png"
+                                    class="dash-icon-img"></div>
+                            <div class="dash-text-div-class">
+                                <div class="sub-section">
+                                    Your Portfolio
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="dash-row-class drchovable">
+                        <a href="/transactions">
+                            <div class="dash-icon-div-class"><img
+                                    src="static/img/datastax/ticker/dash-icon-submenu.png"
+                                    class="dash-icon-img"></div>
+                            <div class="dash-text-div-class">
+                                <div class="sub-section">
+                                    Transaction History
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="dash-row-class drchovable">
+                        <a href="/recommendations">
+                            <div class="dash-icon-div-class"><img
+                                    src="static/img/datastax/ticker/dash-icon-submenu.png"
+                                    class="dash-icon-img"></div>
+                            <div class="dash-text-div-class">
+                                <div class="sub-section">
+                                    Recommendations
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- dash-row-class -->
+            </li>
+            <li class="dash-row-class drchovable">
+                <a href="#">
+                    <div class="dash-icon-div-class"><img
+                            src="static/img/datastax/ticker/dash-icon-quotes.png"
+                            class="dash-icon-img"></div>
+                    <div class="dash-text-div-class">
+                        Quotes & Research
+                    </div>
+                </a>
+            </li>
+            <li class="dash-row-class drchovable">
+                <a href="#">
+                    <div class="dash-icon-div-class"><img
+                            src="static/img/datastax/ticker/dash-icon-mutual.png"
+                            class="dash-icon-img" id="dash-icon-mutual"></div>
+                    <div class="dash-text-div-class">
+                        Mutual Funds, ETFs <br>
+                        & Bonds
+                    </div>
+                </a>
+            </li>
+            <li class="dash-row-class drchovable">
+                <a href="#">
+                    <div class="dash-icon-div-class"><img
+                            src="static/img/datastax/ticker/dash-icon-advice.png"
+                            class="dash-icon-img"></div>
+                    <div class="dash-text-div-class">
+                        Advice & Retirement
+                    </div>
+                </a>
+            </li>
+            <li class="dash-row-class drchovable">
+                <a href="#">
+                    <div class="dash-icon-div-class"><img
+                            src="static/img/datastax/ticker/dash-icon-banking.png"
+                            class="dash-icon-img"></div>
+                    <div class="dash-text-div-class">
+                        Banking & Credit Cards
+                    </div>
+                </a>
+            </li>
+            <li class="dash-row-class drchovable">
+                <a href="/customize">
+                    <div class="dash-icon-div-class"><img
+                            src="static/img/datastax/ticker/dash-icon-customize.png"
+                            class="dash-icon-img"></div>
+                    <div class="dash-text-div-class">
+                        Customize
+                    </div>
+                    <div class="dash-arrowend-div-class"><img
+                            src="static/img/datastax/ticker/dash-icon-arrowend-right.png"
+                            class="dash-arrowend-right-img"></div>
+                </a>
+            </li>
+        </ul>
+        <div class="dash-bar-tail">&nbsp;</div>
+    </div>
+</div>
+{% endblock %}

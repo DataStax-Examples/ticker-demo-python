@@ -1,0 +1,70 @@
+/* version 04.01.2015 -v1- */
+.login-body {
+    background-color:#007b98;
+}
+#login-page {
+    background-color:#007b98;
+    background-color:rgb(0,123,153);
+    display:table;
+    height:100%;
+    width:100%;
+    position:absolute;
+    background-image:url('../images/login-background-v3.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+#login-page>div {
+    display:table-cell;
+    vertical-align:middle;
+}
+#login-page #formblock {
+    width:90%; max-width:360px; margin:auto;
+}
+#login-page #login-form {
+    margin-bottom:0px;
+}
+#login-page #login-form input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 0px;
+    width:100%;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    font-size:16px;
+    /*padding:18px;*/
+    height:2.5em;
+    padding-left:0.5em;
+}
+#login-page #login-logo-img {
+    margin-bottom:45px;
+}
+#login-page #login-form #login_button {
+    color:#fff; padding:8px 8px 9px 8px; 
+    margin-bottom:0px; 
+    background-color:#08b8e2;
+    color: #fff;
+}
+#login-page #login-quick-links .div1 , #login-quick-links .div2 {
+    color:#fff;
+    font-size:11px;
+    margin-bottom:12px;
+}
+#login-page #login-quick-links .div1 {
+    float:left;
+    padding-left:20px;
+}
+#login-page #login-quick-links .div2 {
+    float:right;
+    padding-right:20px;
+}
+.mobcontdiv1 {
+    font-size:1px;
+}
+@media screen and (max-height: 400px) { 
+    .mobcontdiv1 {
+        height: 20px;
+    }
+}

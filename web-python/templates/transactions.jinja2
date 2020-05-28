@@ -1,0 +1,38 @@
+{% extends "base.jinja2" %}
+
+{% block title %}Ticker{% endblock %}
+
+{% block body %}
+    <div id="page-generic">
+        {% include "/navbar.jinja2" %}
+
+        <table id="item-list" style="margin-bottom: 0">
+            <thead>
+            <tr>
+                <th class="col-xs-2 padded left">Symbol</th>
+                <th class="col-xs-2 padded left">Action</th>
+                <th class="col-xs-2 padded right">Price</th>
+                <th class="col-xs-2 padded right">Quantity</th>
+                <th class="col-xs-2 padded right">Total</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for row in results %}
+                <tr {% if loop.first %}class="selecteditem"{% endif %}
+                    id="itemblistutton{{ loop.index }}">
+                    <td class="col-xs-2 padded">{{ row.symbol }}</td>
+                    <td class="col-xs-2 padded">{% if row.buy %}Buy{% else %}Sell{% endif %}</td>
+                    <td class="col-xs-2 padded right">{{ row.price|currency }}</td>
+                    <td class="col-xs-2 padded right">{{ row.quantity }}</td>
+                    <td class="col-xs-2 padded right {% if row.buy %}pricefalling{% else %}pricerising{% endif %}">
+                        {% if row.buy %}-{% endif %}
+                        {{ (row.quantity * row.price)|currency }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="static/js/custom-v1.js"></script>
+
+{% endblock %}

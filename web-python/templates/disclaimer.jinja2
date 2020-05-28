@@ -1,0 +1,36 @@
+{% extends "base.jinja2" %}
+
+{% block title %}Ticker{% endblock %}
+
+{% block body %}
+    <div id="page-generic">
+        <div id="disclaimer-section-div1">
+            <a id="disclaimertopnavcross" href="/"><img
+                    class="disclaimer-topnav-close-img"
+                    src="static/img/mobile-top-nav-button-close-v1-black.png"></a>
+
+            <div id="disclaimer-section-div2">
+                <div class="disclaimer-section-txtdiv">
+                    Please understand that this is not a real financial planning
+                    application. It was created by DataStax solely to demonstrate
+                    the capabilities of the DataStax Enterprise (DSE) database
+                    platform and should not be used to make financial decisions or
+                    for any other purpose than to demonstrate the capabilities of
+                    DSE. The information presented in this application is fictitious
+                    and cannot be used for forecasting or investment recommendations
+                    and is not an offer to buy or sell securities. By using this
+                    demonstration application, you agree to these terms. All use of
+                    this application is subject to the <a class="disclaimer-urls"
+                                                          href="http://www.datastax.com/developer-license-terms">DataStax
+                    terms</a>.
+                    <form id="disclaimer-form" action="portfolio">
+                        <input type="checkbox" name="disclaimer_agree" id="disclaimer_agree" checked>
+                        <label for="disclaimer_agree">I AGREE</label>
+                        <input id="submit_button" type="submit" value="SUBMIT"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
