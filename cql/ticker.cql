@@ -1,8 +1,3 @@
-CREATE KEYSPACE ticker WITH replication = {
-  'class': 'NetworkTopologyStrategy',
-  'Analytics': '1',
-  'Solr': '1'
-};
 
 CREATE TABLE ticker.quotes (
     exchange text,
@@ -86,4 +81,4 @@ CREATE TABLE ticker.recommendations (
     projected_growth double,
     invested_peers double,
     PRIMARY KEY ((risk_tolerance, preferred_investment_types, retirement_age, withdrawal_year), updated_date, recommendation_id)
-) WITH CLUSTERING ORDER BY (updated_date DESC);
+) WITH CLUSTERING ORDER BY (updated_date DESC, recommendation_id DESC);
