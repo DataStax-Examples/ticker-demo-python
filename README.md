@@ -1,4 +1,4 @@
-# datastax-example-template
+# TO DO
 A short few sentences describing what is the purpose of the example and what the user will learn
 
 e.g.
