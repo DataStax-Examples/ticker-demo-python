@@ -1,6 +1,6 @@
-#*WIP*
+# *WIP*
 
-#Stock Tick Demo Application
+# Stock Tick Demo Application
 A short few sentences describing what is the purpose of the example and what the user will learn
 
 e.g.
