@@ -25,14 +25,26 @@ A description of how this sample works and how it demonstrates the objectives ou
 ## Setup and Running
 
 ### Prerequisites
-The prerequisites required for this application to run
 
-e.g.
-* NodeJs version 8
-* A DSE 6.7 Cluster
-* Schema added to the cluster
+* DataStax Enterprise running in Search mode, as well as the following packages:
+
+```
+apt-get install python-pip
+apt-get install python-dev
+apt-get install build-essential
+
+pip install flask
+pip install blist
+pip install cassandra-driver
+```
 
 ### Running
+
+#### Configuartion
+
+To run this application you will need to include the ip address and name of your Search DC in the following files:
+
+
 The steps and configuration needed to run and build this application
 
 e.g.
