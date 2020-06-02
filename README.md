@@ -1,5 +1,3 @@
-# *WIP*
-
 # Stock Tick Demo Application
 There are a large number of devices that are generating, tracking, and sharing data across a variety of networks. This can be overwhelming to most data management solutions. Cassandra is a great fit for consuming lots of time-series data that comes directly from users, devices, sensors, and similar mechanisms that exist in a variety of geographic locations.
 
@@ -59,29 +57,30 @@ To run this application you will need to include the ip address and name of your
     
 ### Create Schema
 
-#### Configure Replication
+* Configure Replication
+```
     CREATE KEYSPACE ticker WITH replication = {
       'class': 'NetworkTopologyStrategy',
       'NAME_OF_DC': '1',
     };
+```
+* set up the table schema
 
-#### Setup Schema
-    cqlsh -f cql/ticker.cql
+    `cqlsh -f cql/ticker.cql`
     
-#### Setup Solr Core
+* Setup up the Solr Core
     
-    dsetool -h IP_ADDRESS_SOLR create_core ticker.latest generateResources=true
-    
+    `dsetool -h IP_ADDRESS_SOLR create_core ticker.latest generateResources=true`
     
 ### Begin streaming data    
     
-#### Seed Data
-
+* Load the seed data
+```
     cd seeding
     chmod +x seed.py
     python seed.py
-    
-#### Stream Data
+ ```   
+* Stream in the stock tick data
     ```
     cd seeding
     chmod +x stream.py
@@ -90,12 +89,12 @@ To run this application you will need to include the ip address and name of your
     
 #### Start the Application
 
-#### Start web server
+* Start up the web server
 
-    ./web-python/run
+   `./web-python/run`
     
-#### Navigate to the Web Portal
+* Navigate to the Web Portal
 
-    http://localhost:5000
+    `http://localhost:5000`
 
 
