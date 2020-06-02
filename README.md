@@ -1,10 +1,9 @@
 # *WIP*
 
 # Stock Tick Demo Application
-A short few sentences describing what is the purpose of the example and what the user will learn
+There are a large number of devices that are generating, tracking, and sharing data across a variety of networks. This can be overwhelming to most data management solutions. Cassandra is a great fit for consuming lots of time-series data that comes directly from users, devices, sensors, and similar mechanisms that exist in a variety of geographic locations.
 
-e.g.
-This application shows how to use configure your NodeJs application to connect to DDAC/Cassandra/DSE or an Apollo database at runtime.
+This is a small demo trading application displaying a simulated stock ticker page.
 
 Contributor(s): [Peyton Casper](https://github.com/peytoncasper)
 
@@ -20,7 +19,8 @@ Contributor(s): [Peyton Casper](https://github.com/peytoncasper)
 * [stream.py](/seeding/stream.py) - Streams in tick data from stock_seed_data.csv
 
 ## How this Works
-A description of how this sample works and how it demonstrates the objectives outlined above
+
+After creating the database schema and setting up the Solr core, connect to the Cassandra cluster through the Python driver. The inital seed data will be inserted into the cluster, followed by streaming in the stock tick data. After that, start the web application and navigate to the web portal at `http://localhost:5000`
 
 ## Setup and Running
 
@@ -44,7 +44,20 @@ pip install cassandra-driver
 
 To run this application you will need to include the ip address and name of your Search DC in the following files:
 
+##### web-python/application.cfg
 
+    DSE_CLUSTER=IP_ADDRESS_OF_NODE
+    DSE_SOLR_DC=NAME_OF_SOLR_DC
+
+##### seeding/seed.py
+    
+    ip_addresses = 'IP_ADDRESS_OF_NODE'
+    
+##### seeding/stream.py
+    
+    ip_addresses = 'IP_ADDRESS_OF_NODE'
+    
+    
 The steps and configuration needed to run and build this application
 
 e.g.
