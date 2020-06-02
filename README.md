@@ -42,20 +42,20 @@ pip install cassandra-driver
 
 To run this application you will need to include the ip address and name of your Search DC in the following files:
 
-##### web-python/application.cfg
+###### web-python/application.cfg
 
     DSE_CLUSTER=IP_ADDRESS_OF_NODE
     DSE_SOLR_DC=NAME_OF_SOLR_DC
 
-##### seeding/seed.py
+###### seeding/seed.py
     
     ip_addresses = 'IP_ADDRESS_OF_NODE'
     
-##### seeding/stream.py
+###### seeding/stream.py
     
     ip_addresses = 'IP_ADDRESS_OF_NODE'
     
-### Create Schema
+#### Create Schema
 
 * Configure Replication
 ```
@@ -72,7 +72,7 @@ To run this application you will need to include the ip address and name of your
     
     `dsetool -h IP_ADDRESS_SOLR create_core ticker.latest generateResources=true`
     
-### Begin streaming data    
+#### Begin streaming data    
     
 * Load the seed data
 ```
@@ -81,20 +81,20 @@ To run this application you will need to include the ip address and name of your
     python seed.py
  ```   
 * Stream in the stock tick data
-    ```
+ ```
     cd seeding
     chmod +x stream.py
     nohup python stream.py &
-    ```
+ ```
     
 #### Start the Application
 
 * Start up the web server
-
-   `./web-python/run`
+ 
+  `./web-python/run`
     
 * Navigate to the Web Portal
-
-    `http://localhost:5000`
+  
+  `http://localhost:5000`
 
 
