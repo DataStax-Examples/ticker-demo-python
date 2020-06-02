@@ -38,7 +38,7 @@ pip install cassandra-driver
 
 ### Running
 
-#### Configuartion
+#### Configuration
 
 To run this application you will need to include the ip address and name of your Search DC in the following files:
 
@@ -59,42 +59,42 @@ To run this application you will need to include the ip address and name of your
 
 * Configure Replication
 ```
-    CREATE KEYSPACE ticker WITH replication = {
-      'class': 'NetworkTopologyStrategy',
-      'NAME_OF_DC': '1',
-    };
+CREATE KEYSPACE ticker WITH replication = {
+  'class': 'NetworkTopologyStrategy',
+  'NAME_OF_DC': '1',
+};
 ```
 * set up the table schema
 
-    `cqlsh -f cql/ticker.cql`
+`cqlsh -f cql/ticker.cql`
     
 * Setup up the Solr Core
     
-    `dsetool -h IP_ADDRESS_SOLR create_core ticker.latest generateResources=true`
-    
+`dsetool -h IP_ADDRESS_SOLR create_core ticker.latest generateResources=true`
+
 #### Begin streaming data    
     
 * Load the seed data
 ```
-    cd seeding
-    chmod +x seed.py
-    python seed.py
+cd seeding
+chmod +x seed.py
+python seed.py
  ```   
 * Stream in the stock tick data
  ```
-    cd seeding
-    chmod +x stream.py
-    nohup python stream.py &
+cd seeding
+chmod +x stream.py
+nohup python stream.py &
  ```
     
 #### Start the Application
 
 * Start up the web server
  
-  `./web-python/run`
+`./web-python/run`
     
 * Navigate to the Web Portal
   
-  `http://localhost:5000`
+`http://localhost:5000`
 
 
