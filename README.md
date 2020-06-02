@@ -57,15 +57,43 @@ To run this application you will need to include the ip address and name of your
     
     ip_addresses = 'IP_ADDRESS_OF_NODE'
     
+# Create Schema
+
+#### Configure Replication
+    CREATE KEYSPACE ticker WITH replication = {
+      'class': 'NetworkTopologyStrategy',
+      'NAME_OF_DC': '1',
+    };
+
+#### Setup Schema
+    cqlsh -f cql/ticker.cql
     
-The steps and configuration needed to run and build this application
+#### Setup Solr Core
+    
+    dsetool -h IP_ADDRESS_SOLR create_core ticker.latest generateResources=true
+    
+    
+### Begin streaming data    
+    
+#### Seed Data
 
-e.g.
-To run this application use the following command:
+    cd seeding
+    chmod +x seed.py
+    python seed.py
+    
+#### Stream Data
+    ```
+    cd seeding
+    chmod +x stream.py
+    nohup python stream.py &
+    ```
+    
+### Start the Application
 
-`node app.js`
+    ./web-python/run
+    
+#### Navigate to the Web Portal
 
-This will produce the following output:
+    http://localhost:5000
 
-`Connected to cluster with 3 host(s) ["XX.XX.XX.136:9042","XX.XX.XX.137:9042","XX.XX.XX.138:9042"]`
 
