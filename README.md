@@ -57,7 +57,7 @@ To run this application you will need to include the ip address and name of your
     
     ip_addresses = 'IP_ADDRESS_OF_NODE'
     
-# Create Schema
+### Create Schema
 
 #### Configure Replication
     CREATE KEYSPACE ticker WITH replication = {
@@ -88,7 +88,9 @@ To run this application you will need to include the ip address and name of your
     nohup python stream.py &
     ```
     
-### Start the Application
+#### Start the Application
+
+#### Start web server
 
     ./web-python/run
     
