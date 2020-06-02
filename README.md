@@ -63,12 +63,11 @@ CREATE KEYSPACE ticker WITH replication = {
   'class': 'NetworkTopologyStrategy',
   'NAME_OF_DC': '1',
 };
-```
-* set up the table schema
+``Setup the table schema
 
 `cqlsh -f cql/ticker.cql`
     
-* Setup up the Solr Core
+* Setup the Solr Core
     
 `dsetool -h IP_ADDRESS_SOLR create_core ticker.latest generateResources=true`
 
