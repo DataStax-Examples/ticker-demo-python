@@ -63,7 +63,8 @@ CREATE KEYSPACE ticker WITH replication = {
   'class': 'NetworkTopologyStrategy',
   'NAME_OF_DC': '1',
 };
-``Setup the table schema
+```
+#### Setup the table schema
 
 `cqlsh -f cql/ticker.cql`
     
@@ -71,7 +72,7 @@ CREATE KEYSPACE ticker WITH replication = {
     
 `dsetool -h IP_ADDRESS_SOLR create_core ticker.latest generateResources=true`
 
-### Begin streaming data    
+#### Begin streaming data    
     
 * Load the seed data
 ```
@@ -86,7 +87,7 @@ chmod +x stream.py
 nohup python stream.py &
  ```
     
-###Start the Application
+#### Start the Application
 
 * Start up the web server
  
